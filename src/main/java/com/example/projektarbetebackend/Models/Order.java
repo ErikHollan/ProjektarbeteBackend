@@ -1,7 +1,12 @@
 package com.example.projektarbetebackend.Models;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.List;
+
+@Entity
+@Data
 
 public class Order {
 

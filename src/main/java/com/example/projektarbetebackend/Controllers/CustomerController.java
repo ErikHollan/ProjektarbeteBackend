@@ -35,6 +35,12 @@ public class CustomerController {
         return customerRepository.findById(id).get();
     }
 
+
+    @RequestMapping("/testing")
+        public String index(){
+            return "hello world";
+
+    }
 }
 
 
