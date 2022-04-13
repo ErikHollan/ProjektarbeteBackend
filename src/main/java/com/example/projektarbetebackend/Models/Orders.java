@@ -8,12 +8,11 @@ import java.util.List;
 @Entity
 @Data
 
-public class Order {
+public class Orders {
 
     @Id
     @GeneratedValue
     private Long id;
-    private String orderNumber;
 
     @ManyToOne
     @JoinColumn
@@ -21,6 +20,6 @@ public class Order {
 
     @ManyToMany
     @JoinTable
-    private List<Item> items;
+    private List<Items> items;
 
 }

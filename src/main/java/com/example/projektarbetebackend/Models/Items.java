@@ -9,7 +9,7 @@ import javax.persistence.Id;
 @Entity
 @Data
 
-public class Item {
+public class Items {
     @Id
     @GeneratedValue
     Long id;
