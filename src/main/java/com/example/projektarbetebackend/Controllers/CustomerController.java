@@ -38,8 +38,6 @@ public class CustomerController {
     public Customer getById(@PathVariable("id")long id) {
         return customerRepository.findById(id).get();
     }
-
-
 }
 
 

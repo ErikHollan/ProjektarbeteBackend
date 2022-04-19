@@ -1,15 +1,13 @@
 package com.example.projektarbetebackend.Controllers;
 
+import com.example.projektarbetebackend.Models.DTO.BuyRequest;
 import com.example.projektarbetebackend.Models.Items;
 import com.example.projektarbetebackend.Models.Orders;
 import com.example.projektarbetebackend.Repositories.CustomerRepository;
 import com.example.projektarbetebackend.Repositories.ItemRepository;
 import com.example.projektarbetebackend.Repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.stream.Collectors;
 
@@ -28,26 +26,28 @@ public class ItemController {
     private CustomerRepository customerRepository;
 
     //http://localhost:8080/items/add?itemnumber=1&name=shoes
-    @RequestMapping("/add")
-    public String addNewProduct(@RequestParam String itemnumber, @RequestParam String name) {
-        Items i = new Items();
-        i.setItemNumber(itemnumber);
-        i.setName(name);
+    @PostMapping("/add")
+    public Items addNewProduct(@RequestBody Items items) {
 
-        itemRepository.save(i);
-        return "Product " + itemnumber + ": " + name + " - " + " has been added";
+        Items items1  = itemRepository.save(items);
+        return items1;
     }
 
-    //http://localhost:8080/items/buy?customer=1&itemid=13
-    @RequestMapping("/buy")
-    public String addNewOrder(@RequestParam Long customer
-            ,@RequestParam Long itemid) {
+
+    @PostMapping("/buy")
+    public Orders newOrder(@RequestBody BuyRequest buyRequest) {
+
         Orders o = new Orders();
-        o.setCustomer(customerRepository.findById(customer).get());
-        o.setItems(itemRepository.findById(itemid).stream().collect(Collectors.toList()));
+
+        o.setCustomer(customerRepository.findById(buyRequest.getCustomerId()).get());
+        o.setItems(itemRepository.findById(buyRequest.getItemId()).stream().collect(Collectors.toList()));
+
         orderRepository.save(o);
-        return "order has been placed";
+        System.out.println(buyRequest.getCustomerId());
+        System.out.println(buyRequest.getItemId());
+        return o;
     }
+
 
     //http://localhost:8080/items/all
     @RequestMapping("/all")

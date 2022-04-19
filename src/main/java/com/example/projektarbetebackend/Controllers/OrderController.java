@@ -1,13 +1,13 @@
 package com.example.projektarbetebackend.Controllers;
 
+import com.example.projektarbetebackend.Models.DTO.BuyRequest;
+import com.example.projektarbetebackend.Models.Items;
 import com.example.projektarbetebackend.Models.Orders;
 import com.example.projektarbetebackend.Repositories.CustomerRepository;
 import com.example.projektarbetebackend.Repositories.ItemRepository;
 import com.example.projektarbetebackend.Repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.criteria.Order;
 import java.util.ArrayList;
@@ -27,10 +27,10 @@ public class OrderController {
         return orderRepository.findAll();
     }
 
-
     @RequestMapping ("/orderbycustomerid")
     public Orders getOrdersById(long id){
         return orderRepository.findById(id).get();
     }
+
 
 }

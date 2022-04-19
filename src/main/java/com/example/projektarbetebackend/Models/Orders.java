@@ -21,5 +21,4 @@ public class Orders {
     @ManyToMany
     @JoinTable
     private List<Items> items;
-
 }
