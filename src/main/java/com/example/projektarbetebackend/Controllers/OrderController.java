@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.criteria.Order;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,9 +28,21 @@ public class OrderController {
         return orderRepository.findAll();
     }
 
-    @RequestMapping ("/orderbycustomerid")
-    public Orders getOrdersById(long id){
-        return orderRepository.findById(id).get();
+    @RequestMapping("/customerId")
+    public Iterable<Orders> getOrdersByCustId(@RequestParam Long custId){
+
+
+        List list = new ArrayList();
+        Iterator<Orders> it = orderRepository.findAll().iterator();
+
+        while(it.hasNext()){
+            Orders orders = it.next();
+            if (orders.getCustomer().getId()==custId){
+               list.add(orders);
+            }
+        }
+
+       return list;
     }
 
 
