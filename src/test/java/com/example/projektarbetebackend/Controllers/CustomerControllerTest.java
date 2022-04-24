@@ -42,7 +42,7 @@ class CustomerControllerTest {
     @Test
     void addNewProduct() throws Exception {
         String requestBody = "{\"name\":\"Alicia\",\"address\":\"Aliväg\"}";
-        mvc.perform(MockMvcRequestBuilders.post("/customers/add")
+        mvc.perform(MockMvcRequestBuilders.post("/customer/add")
                 .accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON)
                 .content(requestBody)).andExpect(status().isCreated()).andDo(MockMvcResultHandlers.print());
 
@@ -50,7 +50,7 @@ class CustomerControllerTest {
 
     @Test
     void getAllCustomers() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("/customers").accept(MediaType.APPLICATION_JSON))
+        mvc.perform(MockMvcRequestBuilders.get("/customer").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().json("[{\"id\":1,\"name\":\"Fredrik\",\"adress\":\"Fredväg\"}," +
                         "{\"id\":2,\"name\":\"Erik\",\"adress\":\"Eriväg\"}"));
@@ -58,7 +58,7 @@ class CustomerControllerTest {
 
     @Test
     void getById() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("/customers/:1").accept(MediaType.APPLICATION_JSON))
+        mvc.perform(MockMvcRequestBuilders.get("/customer/:1").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().json("{\"id\":1,\"name\":\"Fredrik\",\"adress\":\"Fredväg\"}"));
     }
