@@ -1,11 +1,7 @@
 package com.example.projektarbetebackend.Controllers;
 
-import com.example.projektarbetebackend.Models.Customer;
-import com.example.projektarbetebackend.Models.DTO.BuyRequest;
 import com.example.projektarbetebackend.Models.Items;
 import com.example.projektarbetebackend.Repositories.ItemRepository;
-import com.example.projektarbetebackend.Repositories.OrderRepository;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,7 +18,6 @@ import java.util.Arrays;
 import java.util.Optional;
 
 import static org.hamcrest.Matchers.equalTo;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
