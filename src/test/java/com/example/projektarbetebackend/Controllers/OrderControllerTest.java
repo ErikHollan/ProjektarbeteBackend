@@ -45,7 +45,7 @@ class OrderControllerTest {
         BuyRequest bo2 = new BuyRequest(c2.getId(), i2.getId());
 
         when(mockOrderRepository.findAllByCustomerId(1L)).thenReturn(Arrays.asList(bo1));
-        when(mockOrderController.getOrdersByCustId(1L)).thenReturn(Arrays.asList(bo1));
+        when(mockOrderController.getOrdersByCustId(1L)).thenReturn(Arrays.asList(bo1)); /*por qué maría*/
         when(mockOrderRepository.findAll()).thenReturn(Arrays.asList(bo1, bo2));
     }
 
