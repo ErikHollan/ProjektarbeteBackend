@@ -52,13 +52,13 @@ class CustomerControllerTest {
         when(mockRepository.save(c3)).thenReturn(c3);
 
         MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.post("/customer/add")
-                .contentType(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON)
-                .content(mapper.writeValueAsString(c3));
+            .contentType(MediaType.APPLICATION_JSON)
+            .accept(MediaType.APPLICATION_JSON)
+            .content(mapper.writeValueAsString(c3));
 
         mvc.perform(mockRequest)
-                .andExpect(status().isOk())
-                .andExpect(content().string(equalTo("Customer is saved.")));
+            .andExpect(status().isOk())
+            .andExpect(content().string(equalTo("Customer is saved.")));
 
         /*String requestBody = "{\"name\":\"Alicia\",\"address\":\"Aliväg\"}";
         mvc.perform(MockMvcRequestBuilders.post("/customer/add")
@@ -70,15 +70,15 @@ class CustomerControllerTest {
     @Test
     void getAllCustomers() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/customer/all").accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(content().json("[{\"id\":1,\"name\":\"1111\",\"address\":\"väg1111\"}," +
-                        "{\"id\":2,\"name\":\"2222\",\"address\":\"väg2222\"}]"));
+            .andExpect(status().isOk())
+            .andExpect(content().json("[{\"id\":1,\"name\":\"1111\",\"address\":\"väg1111\"}," +
+            "{\"id\":2,\"name\":\"2222\",\"address\":\"väg2222\"}]"));
     }
 
     @Test
     void getById() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/customer/1").accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(content().json("{\"id\":1,\"name\":\"1111\",\"address\":\"väg1111\"}"));
+            .andExpect(status().isOk())
+            .andExpect(content().json("{\"id\":1,\"name\":\"1111\",\"address\":\"väg1111\"}"));
     }
 }

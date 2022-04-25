@@ -53,7 +53,7 @@ class ItemControllerTest {
 
     @Test
     void addNewProduct() throws Exception {
-        Items i4 = new Items(4L, "4444", "item4444");
+        Items i4 = new Items(3L, "3333", "item3333");
         when(mockItemRepository.save(i4)).thenReturn(i4);
 
         MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.post("/items/add")

@@ -23,4 +23,12 @@ public class Orders {
     @ManyToMany
     @JoinTable
     private List<Items> items;
+
+    public Orders(Long id, Customer customer, List<Items> items) {
+        this.id = id;
+        this.customer = customer;
+        this.items = items;
+    }
+
+    public Orders(){}
 }
