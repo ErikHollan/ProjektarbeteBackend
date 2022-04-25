@@ -1,15 +1,9 @@
 package com.example.projektarbetebackend.Controllers;
 
-import com.example.projektarbetebackend.Models.DTO.BuyRequest;
 import com.example.projektarbetebackend.Models.Items;
-import com.example.projektarbetebackend.Models.Orders;
-import com.example.projektarbetebackend.Repositories.CustomerRepository;
 import com.example.projektarbetebackend.Repositories.ItemRepository;
-import com.example.projektarbetebackend.Repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(path = "/items")

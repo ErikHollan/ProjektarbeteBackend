@@ -1,19 +1,10 @@
 package com.example.projektarbetebackend.Controllers;
 
-import com.example.projektarbetebackend.Models.DTO.BuyRequest;
-import com.example.projektarbetebackend.Models.Items;
+
 import com.example.projektarbetebackend.Models.Orders;
-import com.example.projektarbetebackend.Repositories.CustomerRepository;
-import com.example.projektarbetebackend.Repositories.ItemRepository;
 import com.example.projektarbetebackend.Repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import javax.persistence.criteria.Order;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(path = "/orders")
@@ -34,16 +25,16 @@ public class OrderController {
     }
 
     @PostMapping("/buy")
-    public String newOrder(@RequestBody BuyRequest buyRequest) {
+    public String newOrder(@RequestBody Orders order) {
 
         Orders o = new Orders();
 
-        o.setCustomer(buyRequest.getCustomer());
-        o.setItem(buyRequest.getItem());
+        o.setCustomer(order.getCustomer());
+        o.setItem(order.getItem());
 
         orderRepository.save(o);
-        System.out.println(buyRequest.getCustomer().getName());
-        System.out.println(buyRequest.getItem().getName());
+        System.out.println(order.getCustomer().getName());
+        System.out.println(order.getItem().getName());
 
         return "Order has been placed.";
     }

@@ -1,7 +1,6 @@
 package com.example.projektarbetebackend.Controllers;
 
 import com.example.projektarbetebackend.Models.Customer;
-import com.example.projektarbetebackend.Models.Items;
 import com.example.projektarbetebackend.Repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

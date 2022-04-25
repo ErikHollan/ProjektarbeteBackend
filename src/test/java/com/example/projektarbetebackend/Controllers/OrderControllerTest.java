@@ -18,7 +18,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.util.Arrays;
 
-import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.Matchers.equalTo;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -53,7 +53,7 @@ class OrderControllerTest {
         Orders o1 = new Orders(1L, c1, i1);
         Orders o2 = new Orders(2L, c2, i2);
 
-
+        //Fungerar via mockOrderController men ej via mockOrderRepository, kallar dock på samma funktioner förlängt
         when(mockOrderController.getAllOrders()).thenReturn(Arrays.asList(o1, o2));
         when(mockOrderController.getOrdersByCustId(1L)).thenReturn(Arrays.asList(o1));
         /*when(mockOrderRepository.findAllByCustomerId(1L)).thenReturn(Arrays.asList(o1));
@@ -76,20 +76,33 @@ class OrderControllerTest {
             .andExpect(content().json("[{\"id\": 1,\"customer\": {\"id\": 1,\"name\": \"1111\",\"address\": \"väg1111\"},\"item\":{\"id\": 1,\"itemNumber\": \"1111\",\"name\": \"item1111\"}}]"));
                                                     /*{"id": 1,"customer": {"id": 1,"name": "customer1","address": "address1"},"item": {"id": 1,"itemNumber": "1","name": "item1"}}*/
     }
+
+    //Får ok 200, men om vi lägger till förväntad sträng säger den att den får en tom. addNewProduct i ItemController är likadan och fungerar
     @Test
     void newOrder() throws Exception {
         Customer c1 = new Customer(1L, "cust1111", "väg1111");
         Items i3 = new Items(3L, "3333", "item3333");
         Orders order = new Orders(1L, c1, i3);
-
+/*
         MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.post("/orders/buy")
             .contentType(MediaType.APPLICATION_JSON)
             .accept(MediaType.APPLICATION_JSON)
             .content(mapper.writeValueAsString(order));
 
         mvc.perform(mockRequest)
+                .andDo(MockMvcResultHandlers.print())
             .andExpect(status().isOk())
             .andExpect(content().string(equalTo("Order has been placed.")));
+*/
 
+
+        MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.post("/orders/buy")
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
+                .content(mapper.writeValueAsString(order));
+
+        mvc.perform(mockRequest)
+                .andExpect(status().isOk())
+                .andExpect(content().string(equalTo("Item is saved.")));
     }
 }
