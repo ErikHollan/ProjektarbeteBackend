@@ -57,7 +57,6 @@ class OrderControllerTest {
     void getOrdersByCustId() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/orders/:1").accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk())
-            .andExpect(content().json("[{\"id\":1,\"customer\":{\"id\":10,\"name\":\"Henrik\"},\"item\":{\"id\":20,\"name\":\"A thing\"}}," +
-                    "{\"id\":4,\"customer\":{\"id\":10,\"name\":\"Henrik\"},\"item\":{\"id\":22,\"name\":\"Phone\"}}]"));
+            .andExpect(content().json("[{\"id\":1,\"customer\":{\"id\":1,\"name\":\"1111\"},\"item\":{\"id\":1,\"name\":\"item1111\"}}]"));
     }
 }
