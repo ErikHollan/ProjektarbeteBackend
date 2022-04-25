@@ -67,15 +67,6 @@ class ItemControllerTest {
     }
 
     @Test
-    void newOrder() throws Exception {
-        BuyRequest buyOrder = new BuyRequest(1L, 1L);
-        mvc.perform(MockMvcRequestBuilders.post("/items/buy")
-            .accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON)
-            .content(stringWrapper(buyOrder)))
-            .andExpect(status().isOk());
-    }
-
-    @Test
     void getAllProducts() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/items/all").accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk())
@@ -91,11 +82,4 @@ class ItemControllerTest {
             .andExpect(content().json("{\"id\":1,\"itemNumber\":\"1111\",\"name\":\"item1111\"}"));
     }
 
-    public static String stringWrapper(final Object obj) {
-        try {
-            return new ObjectMapper().writeValueAsString(obj);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
 }

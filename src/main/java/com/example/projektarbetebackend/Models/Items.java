@@ -14,9 +14,9 @@ public class Items {
     @Id
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
-    Long id;
-    String itemNumber;
-    String name;
+    private Long id;
+    private String itemNumber;
+    private String name;
 
 
     public Items(long id, String itemNumber, String name) {

@@ -19,11 +19,6 @@ public class ItemController {
     @Autowired
     private ItemRepository itemRepository;
 
-    @Autowired
-    private OrderRepository orderRepository;
-
-    @Autowired
-    private CustomerRepository customerRepository;
 
     //http://localhost:8080/items/add?itemnumber=1&name=shoes
     @PostMapping("/add")
@@ -31,21 +26,6 @@ public class ItemController {
 
         itemRepository.save(items);
         return "Item is saved.";
-    }
-
-
-    @PostMapping("/buy")
-    public Orders newOrder(@RequestBody BuyRequest buyRequest) {
-
-        Orders o = new Orders();
-
-        o.setCustomer(customerRepository.findById(buyRequest.getCustomerId()).get());
-        o.setItems(itemRepository.findById(buyRequest.getItemId()).stream().collect(Collectors.toList()));
-
-        orderRepository.save(o);
-        System.out.println(buyRequest.getCustomerId());
-        System.out.println(buyRequest.getItemId());
-        return o;
     }
 
 

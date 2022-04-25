@@ -30,20 +30,22 @@ public class OrderController {
 
     @RequestMapping("/customerId")
     public Iterable<Orders> getOrdersByCustId(@RequestParam Long custId){
+        return orderRepository.findAllByCustomerId(custId);
+    }
 
+    @PostMapping("/buy")
+    public String newOrder(@RequestBody BuyRequest buyRequest) {
 
-        List list = new ArrayList();
-        Iterator<Orders> it = orderRepository.findAll().iterator();
+        Orders o = new Orders();
 
-        while(it.hasNext()){
-            Orders orders = it.next();
-            if (orders.getCustomer().getId()==custId){
-               list.add(orders);
-            }
-        }
-        Iterable<Orders> ItList = list;
+        o.setCustomer(buyRequest.getCustomer());
+        o.setItem(buyRequest.getItem());
 
-       return ItList;
+        orderRepository.save(o);
+        System.out.println(buyRequest.getCustomer().getName());
+        System.out.println(buyRequest.getItem().getName());
+
+        return "Order has been placed.";
     }
 
 

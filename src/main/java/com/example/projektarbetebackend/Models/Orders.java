@@ -4,7 +4,6 @@ import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Data
@@ -20,14 +19,14 @@ public class Orders {
     @JoinColumn
     private Customer customer;
 
-    @ManyToMany
-    @JoinTable
-    private List<Items> items;
+    @ManyToOne
+    @JoinColumn
+    private Items item;
 
-    public Orders(Long id, Customer customer, List<Items> items) {
+    public Orders(Long id, Customer customer, Items item) {
         this.id = id;
         this.customer = customer;
-        this.items = items;
+        this.item = item;
     }
 
     public Orders(){}

@@ -6,5 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface OrderRepository extends CrudRepository<Orders, Long> {
 
-    Iterable<BuyRequest> findAllByCustomerId(long customerId);
+    Iterable<Orders> findAllByCustomerId(long customerId);
 }
