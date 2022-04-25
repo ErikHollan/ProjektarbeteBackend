@@ -16,10 +16,9 @@ public class CustomerController {
 
 
     @PostMapping("/add")
-    public Customer addNewProduct(@RequestBody Customer customer) {
-
-        Customer c  = customerRepository.save(customer);
-        return c;
+    public String addNewCustomer(@RequestBody Customer customer) {
+        customerRepository.save(customer);
+        return "Customer is saved.";
     }
 
 

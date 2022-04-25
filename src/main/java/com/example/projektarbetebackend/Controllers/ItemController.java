@@ -27,10 +27,10 @@ public class ItemController {
 
     //http://localhost:8080/items/add?itemnumber=1&name=shoes
     @PostMapping("/add")
-    public Items addNewProduct(@RequestBody Items items) {
+    public String addNewProduct(@RequestBody Items items) {
 
-        Items items1  = itemRepository.save(items);
-        return items1;
+        itemRepository.save(items);
+        return "Item is saved.";
     }
 
 
