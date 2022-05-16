@@ -13,7 +13,6 @@ import java.util.ArrayList;
 public class MyUserDetailsService implements UserDetailsService {
 
      UserRepository userRepository;
-     User user;
 
     public MyUserDetailsService(UserRepository userRepository) {
         this.userRepository = userRepository;

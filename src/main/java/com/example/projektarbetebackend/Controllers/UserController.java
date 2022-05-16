@@ -11,12 +11,12 @@ public class UserController {
     private UserRepository userRepository;
 
     @PostMapping("/signup")
-    public String addNewCustomer(@RequestBody User user) {
+    public String addNewUser(@RequestBody User user) {
         userRepository.save(user);
         return "User created";
     }
     @RequestMapping("/all")
-    public Iterable<User> getAllCustomers(){
+    public Iterable<User> getAllUsers(){
         return userRepository.findAll();
     }
 }
