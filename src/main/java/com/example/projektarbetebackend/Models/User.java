@@ -2,27 +2,81 @@ package com.example.projektarbetebackend.Models;
 
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @Entity
 @Data
 public class User {
-
     @Id
-    @GeneratedValue(generator = "increment")
-    @GenericGenerator(name = "increment", strategy = "increment")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
 
-    private Long id;
+    @Column(nullable = false)
     private String username;
+
+    @Column(nullable = false)
     private String password;
 
-    public User(Long id, String username, String password) {
-        this.id = id;
+    private int active;
+
+    private String roles = " ";
+
+    private String permissions = " ";
+
+    public User(String username, String password, String roles, String permissions){
         this.username = username;
         this.password = password;
+        this.roles = roles;
+        this.permissions = permissions;
+        this.active = 1;
     }
-    public User(){}
+
+    protected User(){}
+
+    public long getId() {
+        return id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public int getActive() {
+        return active;
+    }
+
+    public String getRoles() {
+        return roles;
+    }
+
+    public String getPermissions() {
+        return permissions;
+    }
+
+    public List<String> getRoleList(){
+        if(this.roles.length() > 0){
+            return Arrays.asList(this.roles.split(","));
+        }
+        return new ArrayList<>();
+    }
+
+    public void setPermissions(String permissions) {
+        this.permissions = permissions;
+    }
+
+    public List<String> getPermissionList(){
+        if(this.permissions.length() > 0){
+            return Arrays.asList(this.permissions.split(","));
+        }
+        return new ArrayList<>();
+    }
 }
