@@ -1,5 +1,7 @@
 package com.example.projektarbetebackend.Models;
 
+import org.springframework.http.HttpHeaders;
+
 public class AuthenticationResponse {
 
     private final String token;
@@ -10,4 +12,7 @@ public class AuthenticationResponse {
     public String getToken() {
         return token;
     }
+
 }
+
+
