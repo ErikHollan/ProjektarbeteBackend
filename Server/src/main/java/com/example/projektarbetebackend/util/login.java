@@ -41,13 +41,6 @@ public class login {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(@RequestBody User user) throws Exception {
 
-
-        System.out.println(user.getPassword());
-        System.out.println(userRepository.findByUsername(user.getUsername()).getUsername());
-        System.out.println(userRepository.findByUsername(user.getUsername()).getPassword());
-
-        System.out.println(BCrypt.checkpw(user.getPassword(), userRepository.findByUsername(user.getUsername()).getPassword()));
-
         if(BCrypt.checkpw(user.getPassword(), userRepository.findByUsername(user.getUsername()).getPassword())){
             final UserDetails userDetails = userDetailsService
                     .loadUserByUsername(user.getUsername());
@@ -55,25 +48,7 @@ public class login {
             return ResponseEntity.ok(new AuthenticationResponse(jwt));
         }else{
             throw new Exception("Incorrect username or password");
-            //kanske skriva ut felmeddelande?
         }
-/*
-        try {
-            authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(user.getUsername(),
-                            user.getPassword())
-            );
-        } catch (BadCredentialsException e) {
-            throw new Exception("Incorrect username or password", e);
-        }
-        final UserDetails userDetails = userDetailsService
-                .loadUserByUsername(user.getUsername());
-        final String jwt = jwtTokenUtil.generateToken(userDetails);
-
-
-        return ResponseEntity.ok(new AuthenticationResponse(jwt));
-
- */
 
     }
 
