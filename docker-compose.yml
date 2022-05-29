@@ -1,0 +1,32 @@
+version: "3.3"
+services:
+
+  mysql:
+   image: "mysql:8.0.20"
+   container_name: mysql
+   ports:
+     - "3307:3306"
+   environment:
+     - MYSQL_DATABASE=projektarbetebackend
+     - MYSQL_PASSWORD=Hollander1
+     - MYSQL_ROOT_PASSWORD=Hollander1
+
+  api:
+    build: server/
+    ports:
+      - "8081:8080"
+    environment:
+      MYSQL_HOST: "mysql"
+    depends_on:
+      - mysql
+    restart: unless-stopped
+
+  frontend:
+    build: client/
+    ports:
+      - "8082:9000"
+    environment:
+      WEBSHOP_API: "http://api:8080"
+    depends_on:
+      - api
+    restart: unless-stopped
