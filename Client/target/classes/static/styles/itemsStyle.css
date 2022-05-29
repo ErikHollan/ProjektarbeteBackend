@@ -1,0 +1,46 @@
+.mainBox{
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0px 25px 40px #1687d933;
+    padding: 1%;
+    border: 2px groove black;
+    overflow: auto;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom right, #E3F0FF, #FAFCFF);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Header{
+    margin: auto;
+    width: 90%;
+    height: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: pink;
+}
+.Heading{
+    font-size: 20px;
+    font-family: ‘Open Sans’;
+    font-weight: 700;
+    color: #2F3841;
+}
+
+.itemsDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+}
+tbody tr:nth-child(odd) {
+    background-color: #f2f2f2;
+    overflow: auto;
+}
+

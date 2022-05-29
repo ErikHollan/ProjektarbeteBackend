@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>This is the title</title>
+    <link rel="stylesheet" th:href="@{/styles/itemsStyle.css}">
+</head>
+<body>
+<div class="mainBox">
+    <div class=”Header”>
+        <h2 th:text="${itemTitle}"></h2>
+    </div>
+    <div class="itemsDiv">
+        <table>
+            <thead>
+            <tr>
+                <td>Item number</td>
+                <td>Item name</td>
+            </tr>
+            <tbody class="itemList">
+            <tr th:each="cap : ${allItems}">
+                <td th:text="${cap.itemNumber}"></td>
+                <td th:text="${cap.name}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
