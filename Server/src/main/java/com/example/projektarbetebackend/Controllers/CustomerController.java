@@ -20,7 +20,6 @@ public class CustomerController {
         return "Customer is saved.";
     }
 
-
     //http://localhost:8080/customer/all
     @RequestMapping("/all")
     public Iterable<Customer> getAllCustomers(){

@@ -1,7 +1,6 @@
 package com.example.projektarbetebackend.util;
 
 import com.example.projektarbetebackend.Controllers.UserController;
-import com.example.projektarbetebackend.Models.AuthenticationRequest;
 import com.example.projektarbetebackend.Models.AuthenticationResponse;
 import com.example.projektarbetebackend.Models.User;
 import com.example.projektarbetebackend.Repositories.UserRepository;
