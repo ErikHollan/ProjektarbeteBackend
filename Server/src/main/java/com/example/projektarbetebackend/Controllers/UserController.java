@@ -17,10 +17,8 @@ public class UserController {
         userRepository.save(user);
         return "User created";
     }
-    @RequestMapping("/all")
+    @RequestMapping("/allusers")
     public Iterable<User> getAllUsers(){
         return userRepository.findAll();
     }
-
-
 }

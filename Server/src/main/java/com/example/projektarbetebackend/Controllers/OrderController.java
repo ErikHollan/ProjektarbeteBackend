@@ -33,9 +33,6 @@ public class OrderController {
         o.setItem(order.getItem());
 
         orderRepository.save(o);
-        System.out.println(order.getCustomer().getName());
-        System.out.println(order.getItem().getName());
-
         return "Order has been placed.";
     }
 

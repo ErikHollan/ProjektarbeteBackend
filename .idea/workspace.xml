@@ -5,16 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="973b0f8d-f401-4e3f-9acf-7d793019c2fb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Client/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/BuildDocker.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API-Docs.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/main/java/com/example/frontendprojektarbetebackend/RestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/java/com/example/frontendprojektarbetebackend/RestService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Client/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/target/classes/com/example/frontendprojektarbetebackend/RestService.class" beforeDir="false" afterPath="$PROJECT_DIR$/Client/target/classes/com/example/frontendprojektarbetebackend/RestService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/example/projektarbetebackend/util/login.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/example/projektarbetebackend/util/login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/example/projektarbetebackend/Controllers/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/example/projektarbetebackend/Controllers/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/example/projektarbetebackend/Controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/example/projektarbetebackend/Controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/example/projektarbetebackend/util/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/example/projektarbetebackend/util/SecurityConfig.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +87,7 @@
       <updated>1653572779330</updated>
       <workItem from="1653572783090" duration="5065000" />
       <workItem from="1653851551153" duration="25000" />
-      <workItem from="1653851598045" duration="872000" />
+      <workItem from="1653851598045" duration="1884000" />
     </task>
     <task id="LOCAL−00001" summary="asd">
       <created>1653851721471</created>
@@ -101,7 +95,19 @@
       <option name="presentableId" value="LOCAL−00001" />
       <updated>1653851721471</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL−00002" summary="almost final touch">
+      <created>1653859856380</created>
+      <option name="number" value="LOCAL−00002" />
+      <option name="presentableId" value="LOCAL−00002" />
+      <updated>1653859856380</updated>
+    </task>
+    <task id="LOCAL−00003" summary="almost final touch">
+      <created>1653859960333</created>
+      <option name="number" value="LOCAL−00003" />
+      <option name="presentableId" value="LOCAL−00003" />
+      <updated>1653859960333</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -109,6 +115,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="asd" />
-    <option name="LAST_COMMIT_MESSAGE" value="asd" />
+    <MESSAGE value="almost final touch" />
+    <option name="LAST_COMMIT_MESSAGE" value="almost final touch" />
   </component>
 </project>

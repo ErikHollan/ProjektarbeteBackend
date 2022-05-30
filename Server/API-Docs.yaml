@@ -11,6 +11,7 @@ paths:
       tags:
       - user-controller
       operationId: addNewUser
+      description: creates new user with username and password
       requestBody:
         content:
           application/json:
@@ -24,11 +25,24 @@ paths:
             '*/*':
               schema:
                 type: string
+  /allusers:
+    get:
+      tags:
+      - user-controller
+      operationId: getAllUsers_1
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/User'
   /orders/buy:
     post:
       tags:
       - order-controller
       operationId: newOrder
+      description: creates an order consisting of customer and item
       requestBody:
         content:
           application/json:
@@ -47,6 +61,7 @@ paths:
       tags:
       - login
       operationId: createAuthenticationToken
+      description: takes username and password. If correct - gives user permissions by returning a token
       requestBody:
         content:
           application/json:
@@ -65,6 +80,7 @@ paths:
       tags:
       - item-controller
       operationId: addNewProduct
+      description: creates new item with itemNumber and name
       requestBody:
         content:
           application/json:
@@ -83,6 +99,7 @@ paths:
       tags:
       - customer-controller
       operationId: addNewCustomer
+      description: creates new customer with name and address
       requestBody:
         content:
           application/json:
@@ -101,11 +118,12 @@ paths:
       tags:
       - order-controller
       operationId: getOrdersByCustId_1
+      description: returns orders for entered customerId
       parameters:
       - name: custId
         in: query
         required: true
-        schema:
+        schema: 
           type: integer
           format: int64
       responses:
@@ -113,307 +131,27 @@ paths:
           description: OK
           content:
             '*/*':
-              schema:
-                type: object
-    put:
-      tags:
-      - order-controller
-      operationId: getOrdersByCustId
-      parameters:
-      - name: custId
-        in: query
-        required: true
-        schema:
-          type: integer
-          format: int64
-      responses:
-        "200":
-          description: OK
-          content:
-            '*/*':
-              schema:
-                type: object
-    post:
-      tags:
-      - order-controller
-      operationId: getOrdersByCustId_5
-      parameters:
-      - name: custId
-        in: query
-        required: true
-        schema:
-          type: integer
-          format: int64
-      responses:
-        "200":
-          description: OK
-          content:
-            '*/*':
-              schema:
-                type: object
-    delete:
-      tags:
-      - order-controller
-      operationId: getOrdersByCustId_4
-      parameters:
-      - name: custId
-        in: query
-        required: true
-        schema:
-          type: integer
-          format: int64
-      responses:
-        "200":
-          description: OK
-          content:
-            '*/*':
-              schema:
-                type: object
-    options:
-      tags:
-      - order-controller
-      operationId: getOrdersByCustId_6
-      parameters:
-      - name: custId
-        in: query
-        required: true
-        schema:
-          type: integer
-          format: int64
-      responses:
-        "200":
-          description: OK
-          content:
-            '*/*':
-              schema:
-                type: object
-    head:
-      tags:
-      - order-controller
-      operationId: getOrdersByCustId_2
-      parameters:
-      - name: custId
-        in: query
-        required: true
-        schema:
-          type: integer
-          format: int64
-      responses:
-        "200":
-          description: OK
-          content:
-            '*/*':
-              schema:
-                type: object
-    patch:
-      tags:
-      - order-controller
-      operationId: getOrdersByCustId_3
-      parameters:
-      - name: custId
-        in: query
-        required: true
-        schema:
-          type: integer
-          format: int64
-      responses:
-        "200":
-          description: OK
-          content:
-            '*/*':
-              schema:
-                type: object
+              schema: 
+                $ref: '#/components/schemas/Orders'
   /orders/all:
     get:
       tags:
       - order-controller
       operationId: getAllOrders_1
+      description: returns all orders
       responses:
         "200":
           description: OK
           content:
             '*/*':
               schema:
-                type: object
-    put:
-      tags:
-      - order-controller
-      operationId: getAllOrders
-      responses:
-        "200":
-          description: OK
-          content:
-            '*/*':
-              schema:
-                type: object
-    post:
-      tags:
-      - order-controller
-      operationId: getAllOrders_5
-      responses:
-        "200":
-          description: OK
-          content:
-            '*/*':
-              schema:
-                type: object
-    delete:
-      tags:
-      - order-controller
-      operationId: getAllOrders_4
-      responses:
-        "200":
-          description: OK
-          content:
-            '*/*':
-              schema:
-                type: object
-    options:
-      tags:
-      - order-controller
-      operationId: getAllOrders_6
-      responses:
-        "200":
-          description: OK
-          content:
-            '*/*':
-              schema:
-                type: object
-    head:
-      tags:
-      - order-controller
-      operationId: getAllOrders_2
-      responses:
-        "200":
-          description: OK
-          content:
-            '*/*':
-              schema:
-                type: object
-    patch:
-      tags:
-      - order-controller
-      operationId: getAllOrders_3
-      responses:
-        "200":
-          description: OK
-          content:
-            '*/*':
-              schema:
-                type: object
+               $ref: '#/components/schemas/Orders'
   /items/{id}:
     get:
       tags:
       - item-controller
       operationId: getitemById_1
-      parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: integer
-          format: int64
-      responses:
-        "200":
-          description: OK
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/Items'
-    put:
-      tags:
-      - item-controller
-      operationId: getitemById
-      parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: integer
-          format: int64
-      responses:
-        "200":
-          description: OK
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/Items'
-    post:
-      tags:
-      - item-controller
-      operationId: getitemById_5
-      parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: integer
-          format: int64
-      responses:
-        "200":
-          description: OK
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/Items'
-    delete:
-      tags:
-      - item-controller
-      operationId: getitemById_4
-      parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: integer
-          format: int64
-      responses:
-        "200":
-          description: OK
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/Items'
-    options:
-      tags:
-      - item-controller
-      operationId: getitemById_6
-      parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: integer
-          format: int64
-      responses:
-        "200":
-          description: OK
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/Items'
-    head:
-      tags:
-      - item-controller
-      operationId: getitemById_2
-      parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: integer
-          format: int64
-      responses:
-        "200":
-          description: OK
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/Items'
-    patch:
-      tags:
-      - item-controller
-      operationId: getitemById_3
+      description: returns item by entered itemId
       parameters:
       - name: id
         in: path
@@ -433,192 +171,20 @@ paths:
       tags:
       - item-controller
       operationId: getAllProducts_1
+      description: returns all items
       responses:
         "200":
           description: OK
           content:
             '*/*':
               schema:
-                type: object
-    put:
-      tags:
-      - item-controller
-      operationId: getAllProducts
-      responses:
-        "200":
-          description: OK
-          content:
-            '*/*':
-              schema:
-                type: object
-    post:
-      tags:
-      - item-controller
-      operationId: getAllProducts_5
-      responses:
-        "200":
-          description: OK
-          content:
-            '*/*':
-              schema:
-                type: object
-    delete:
-      tags:
-      - item-controller
-      operationId: getAllProducts_4
-      responses:
-        "200":
-          description: OK
-          content:
-            '*/*':
-              schema:
-                type: object
-    options:
-      tags:
-      - item-controller
-      operationId: getAllProducts_6
-      responses:
-        "200":
-          description: OK
-          content:
-            '*/*':
-              schema:
-                type: object
-    head:
-      tags:
-      - item-controller
-      operationId: getAllProducts_2
-      responses:
-        "200":
-          description: OK
-          content:
-            '*/*':
-              schema:
-                type: object
-    patch:
-      tags:
-      - item-controller
-      operationId: getAllProducts_3
-      responses:
-        "200":
-          description: OK
-          content:
-            '*/*':
-              schema:
-                type: object
+                $ref: '#/components/schemas/Items'
   /customer/{id}:
     get:
       tags:
       - customer-controller
       operationId: getById_1
-      parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: integer
-          format: int64
-      responses:
-        "200":
-          description: OK
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/Customer'
-    put:
-      tags:
-      - customer-controller
-      operationId: getById
-      parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: integer
-          format: int64
-      responses:
-        "200":
-          description: OK
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/Customer'
-    post:
-      tags:
-      - customer-controller
-      operationId: getById_5
-      parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: integer
-          format: int64
-      responses:
-        "200":
-          description: OK
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/Customer'
-    delete:
-      tags:
-      - customer-controller
-      operationId: getById_4
-      parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: integer
-          format: int64
-      responses:
-        "200":
-          description: OK
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/Customer'
-    options:
-      tags:
-      - customer-controller
-      operationId: getById_6
-      parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: integer
-          format: int64
-      responses:
-        "200":
-          description: OK
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/Customer'
-    head:
-      tags:
-      - customer-controller
-      operationId: getById_2
-      parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: integer
-          format: int64
-      responses:
-        "200":
-          description: OK
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/Customer'
-    patch:
-      tags:
-      - customer-controller
-      operationId: getById_3
+      description: returns customer by entered customerId
       parameters:
       - name: id
         in: path
@@ -638,157 +204,14 @@ paths:
       tags:
       - customer-controller
       operationId: getAllCustomers_1
+      description: returns all customers
       responses:
         "200":
           description: OK
           content:
             '*/*':
               schema:
-                type: object
-    put:
-      tags:
-      - customer-controller
-      operationId: getAllCustomers
-      responses:
-        "200":
-          description: OK
-          content:
-            '*/*':
-              schema:
-                type: object
-    post:
-      tags:
-      - customer-controller
-      operationId: getAllCustomers_5
-      responses:
-        "200":
-          description: OK
-          content:
-            '*/*':
-              schema:
-                type: object
-    delete:
-      tags:
-      - customer-controller
-      operationId: getAllCustomers_4
-      responses:
-        "200":
-          description: OK
-          content:
-            '*/*':
-              schema:
-                type: object
-    options:
-      tags:
-      - customer-controller
-      operationId: getAllCustomers_6
-      responses:
-        "200":
-          description: OK
-          content:
-            '*/*':
-              schema:
-                type: object
-    head:
-      tags:
-      - customer-controller
-      operationId: getAllCustomers_2
-      responses:
-        "200":
-          description: OK
-          content:
-            '*/*':
-              schema:
-                type: object
-    patch:
-      tags:
-      - customer-controller
-      operationId: getAllCustomers_3
-      responses:
-        "200":
-          description: OK
-          content:
-            '*/*':
-              schema:
-                type: object
-  /all:
-    get:
-      tags:
-      - user-controller
-      operationId: getAllUsers_1
-      responses:
-        "200":
-          description: OK
-          content:
-            '*/*':
-              schema:
-                type: object
-    put:
-      tags:
-      - user-controller
-      operationId: getAllUsers
-      responses:
-        "200":
-          description: OK
-          content:
-            '*/*':
-              schema:
-                type: object
-    post:
-      tags:
-      - user-controller
-      operationId: getAllUsers_5
-      responses:
-        "200":
-          description: OK
-          content:
-            '*/*':
-              schema:
-                type: object
-    delete:
-      tags:
-      - user-controller
-      operationId: getAllUsers_4
-      responses:
-        "200":
-          description: OK
-          content:
-            '*/*':
-              schema:
-                type: object
-    options:
-      tags:
-      - user-controller
-      operationId: getAllUsers_6
-      responses:
-        "200":
-          description: OK
-          content:
-            '*/*':
-              schema:
-                type: object
-    head:
-      tags:
-      - user-controller
-      operationId: getAllUsers_2
-      responses:
-        "200":
-          description: OK
-          content:
-            '*/*':
-              schema:
-                type: object
-    patch:
-      tags:
-      - user-controller
-      operationId: getAllUsers_3
-      responses:
-        "200":
-          description: OK
-          content:
-            '*/*':
-              schema:
-                type: object
+                $ref: '#/components/schemas/Customer'
 components:
   schemas:
     User:
